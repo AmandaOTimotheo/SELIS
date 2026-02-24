@@ -1,0 +1,44 @@
+services:
+  mqtt-broker:
+    image: eclipse-mosquitto
+    container_name: mqtt-broker
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto_config:/mosquitto/config
+
+  publisher:
+    build: 
+      context: ./publisher
+      dockerfile: Dockerfile
+    container_name: publisher
+    depends_on:
+      - mqtt-broker
+    volumes:
+      - ./publisher/source:/app/source
+      - ./publisher:/app/publisher
+      - ./simulation:/app/simulation
+      - ./maps:/app/maps
+      - ./reports:/app/reports
+      - ./financial:/app/financial
+      - ./results:/app/results
+    ports:
+      - "8000:8000"  # Web UI for parameters editor
+      - "5678:5678"  # Port to Debug
+    environment:
+      - PYDEVD_DISABLE_FILE_VALIDATION=1  # Disabling file validation for the debugger
+    #command: python -Xfrozen_modules=off /app/publisher/scripts/publisher.py  # Disable frozen modules
+      
+  subscriber:
+    build:
+      context: ./subscriber
+      dockerfile: Dockerfile
+    container_name: subscriber
+    depends_on:
+      - mqtt-broker
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./subscriber/readings:/app/subscriber/readings
+    environment:
+      - DISPLAY=${DISPLAY:-:0} 
+  

@@ -1,0 +1,426 @@
+{
+  "debug": false,
+  "path_json": "/app/source/parameters",
+  "clustering": {
+    "clustering": false,
+    "final_path": "/app/results/Clustering",
+    "generate_clustered_map": false,
+    "generate_density_map": false,
+    "devices": {
+      "edge_fog": {
+        "max_points": 12,
+        "max_range_km": 0.5,
+        "percentage": 0.6,
+        "priority": 1,
+        "labels": {
+          "1": "id",
+          "2": "name",
+          "3": "fog_num",
+          "4": "edge_num",
+          "5": "is_fog",
+          "6": "fog_id",
+          "7": "edge_id"
+        }
+      },
+      "panel": {
+        "max_points_branch": 20,
+        "min_points_branch": 12,
+        "n_branchs": 6,
+        "percentage": 0.4,
+        "priority": 2,
+        "labels": {
+          "1": "id",
+          "2": "name",
+          "3": "panel_num",
+          "4": "branch_num",
+          "5": "panel_id"
+        }
+      }
+    },
+    "raw_database": {
+      "path": "/app/source/latlon.csv",
+      "fields": {
+        "id": "Id",
+        "lat": "Latitude",
+        "lon": "Longitude",
+        "rated_power": "Rated Power",
+        "rated_power_factor": "Power Factor",
+        "rated_voltage": "Rated Voltage"
+      },
+      "labels": {
+        "1": "id"
+      }
+    }
+  },
+  "collision": {
+    "enable": false,
+    "monte_carlo_simulation_enable": true,
+    "msg_transmission_time": 0.008,
+    "num_channels": 8,
+    "num_edges": 1000,
+    "poisson_calculation_enable": true,
+    "save_data_path": "/app/results/Collision",
+    "t_simulation_cycles": 100,
+    "transmission_interval_edge": 600
+  },
+  "financial": {
+    "devices": {
+      "edge_fog": {
+        "communication_cost_report": {
+          "chosen_communication": "LORA",
+          "enable_capex": false,
+          "enable_consumption_report": false,
+          "enable_opex": false,
+          "enable_transmission_and_storage": false,
+          "communication_type": {
+            "GPRS": {
+              "edge_power_W": 1,
+              "fog_power_W": 12,
+              "overhead_bytes": 90,
+              "price_edge_annual_maintenance": 10,
+              "price_edge_installation": 22,
+              "price_fog_annual_maintenance": 300,
+              "price_fog_installation": 600,
+              "price_per_edge": 28,
+              "price_per_fog": 1500
+            },
+            "LORA": {
+              "edge_power_W": 1,
+              "fog_power_W": 2.9,
+              "overhead_bytes": 15,
+              "price_edge_annual_maintenance": 1.19,
+              "price_edge_installation": 49.47,
+              "price_fog_annual_maintenance": 24.01,
+              "price_fog_installation": 1000.01,
+              "price_per_edge": 50,
+              "price_per_fog": 1000
+            }
+          },
+          "storage": {
+            "months_of_storage": 12,
+            "storage_cost_per_GB": 1.39
+          },
+          "transmission": {
+            "connectivity_cost_per_minute": 4.448e-7,
+            "cost_per_mqtt_msg": 0.00000556,
+            "max_KBs_per_message": 5,
+            "internet_cost_MB_BRL": {
+              "20": 6.9,
+              "50": 9.9,
+              "100": 9.9
+            }
+          }
+        },
+        "payloads": {
+          "header": {
+            "general": {
+              "esp_temperature": "TESP",
+              "fog_id": "F_ID",
+              "id": "E_ID",
+              "name": "N_E",
+              "timestamp": "Timestamp"
+            },
+            "measures": {
+              "consumption": "EN",
+              "current": "I",
+              "power_factor": "PF",
+              "voltage": "V"
+            }
+          },
+          "n_decimals": {
+            "general": {},
+            "measures": {
+              "consumption": 5,
+              "current": 3,
+              "power_factor": 3,
+              "voltage": 2
+            }
+          },
+          "save": {
+            "storage_format": "SQL",
+            "general": {
+              "esp_temperature": true,
+              "fog_id": true,
+              "id": true,
+              "name": true,
+              "timestamp": true
+            },
+            "measures": {
+              "consumption": true,
+              "current": true,
+              "power_factor": true,
+              "voltage": true
+            }
+          },
+          "send": {
+            "transmission_format": "CBOR",
+            "general": {
+              "esp_temperature": true,
+              "fog_id": true,
+              "id": true,
+              "name": true,
+              "timestamp": true
+            },
+            "measures": {
+              "consumption": true,
+              "current": true,
+              "power_factor": true,
+              "voltage": true
+            }
+          }
+        }
+      },
+      "panel": {
+        "communication_cost_report": {
+          "chosen_communication": "PANEL",
+          "enable_capex": false,
+          "enable_consumption_report": false,
+          "enable_opex": false,
+          "enable_transmission_and_storage": false,
+          "communication_type": {
+            "PANEL": {
+              "overhead_bytes": 15,
+              "panel_power_W": 6.5,
+              "price_cable_installation_meter": 0.51,
+              "price_cable_meter": 0.5,
+              "price_panel_annual_maintenance": 34.85,
+              "price_panel_installation": 1000,
+              "price_per_panel": 1905.09
+            }
+          },
+          "storage": {
+            "months_of_storage": 12,
+            "storage_cost_per_GB": 1.39
+          },
+          "transmission": {
+            "connectivity_cost_per_minute": 4.448e-7,
+            "cost_per_mqtt_msg": 0.00000556,
+            "max_KBs_per_message": 5,
+            "internet_cost_MB_BRL": {
+              "20": 6.9,
+              "50": 9.9,
+              "100": 9.9
+            }
+          }
+        },
+        "payloads": {
+          "header": {
+            "general": {
+              "battery": "Battery",
+              "branches_status": "L",
+              "humidity": "Humidity",
+              "id": "P_ID",
+              "name": "N_P",
+              "temperature": "Temperature",
+              "timestamp": "Timestamp"
+            },
+            "measures": {
+              "alarm": "Alarms",
+              "consumption": "EN",
+              "current": "I",
+              "power_factor": "PF",
+              "voltage": "V"
+            }
+          },
+          "n_decimals": {
+            "general": {},
+            "measures": {
+              "consumption": 5,
+              "current": 3,
+              "power_factor": 3,
+              "voltage": 2
+            }
+          },
+          "save": {
+            "storage_format": "SQL",
+            "general": {
+              "battery": true,
+              "branches_status": false,
+              "humidity": false,
+              "id": false,
+              "name": false,
+              "temperature": false,
+              "timestamp": true
+            },
+            "measures": {
+              "alarm": false,
+              "consumption": false,
+              "current": false,
+              "power_factor": false,
+              "voltage": false
+            }
+          },
+          "send": {
+            "transmission_format": "CBOR",
+            "general": {
+              "battery": true,
+              "branches_status": true,
+              "humidity": true,
+              "id": true,
+              "name": true,
+              "temperature": false,
+              "timestamp": true
+            },
+            "measures": {
+              "alarm": true,
+              "consumption": true,
+              "current": true,
+              "power_factor": true,
+              "voltage": true
+            }
+          }
+        }
+      }
+    },
+    "general": {
+      "price_kWh": 0.13482477876106,
+      "save_report_path": "/app/results/Financial",
+      "used_currency": "USD",
+      "conversion_to_other_currency": {
+        "enable": false,
+        "to": "USD"
+      },
+      "currency_to_USD": {
+        "AUD": 0.14,
+        "BRL": 5.65,
+        "CAN": 0.15,
+        "EUR": 1.11,
+        "GBP": 1.25,
+        "JPY": 0.0073,
+        "USD": 1
+      },
+      "estimated_vs_simulated": {
+        "enable": false,
+        "estimated_hours_on_per_day": 11.45,
+        "red_flag_1_add_price": 4.463,
+        "red_flag_2_add_price": 7.8777,
+        "yellow_flag_add_price": 1.885
+      }
+    }
+  },
+  "simulation": {
+    "daylight": {
+      "sunrise_end": "6:03",
+      "sunrise_start": "5:39",
+      "sunset_end": "18:28",
+      "sunset_start": "18:05"
+    },
+    "devices": {
+      "edge_fog": {
+        "publication_interval_day": 60,
+        "publication_interval_night": 60,
+        "database": {
+          "path": "/app/publisher/source/latlon_only_edge_fog.csv",
+          "fields": {
+            "cluster_name": "Cluster_name",
+            "edge_id": "E_ID",
+            "edge_num": "Edge",
+            "fog_id": "F_ID",
+            "fog_num": "Fog",
+            "id": "Id",
+            "is_fog": "isFog",
+            "lat": "Latitude",
+            "lat_cell": "Lat_cell",
+            "lon": "Longitude",
+            "lon_cell": "Lon_cell",
+            "name": "Device_name",
+            "rated_current": "Current",
+            "rated_power": "Rated Power",
+            "rated_power_factor": "Power Factor",
+            "rated_voltage": "Rated Voltage"
+          }
+        },
+        "failure_rate": {
+          "day_on": 0.000005,
+          "night_low_voltage": 0.0001,
+          "night_zero_voltage": 0.0001,
+          "transmission": 0.000001
+        },
+        "modes": {
+          "offline_simulation": {
+            "enable": false,
+            "save_data_path": "/app/results/Simulation"
+          },
+          "real_time_simulation": {
+            "enable": false,
+            "is_print_publish": false,
+            "topics": "fog/pub",
+            "mqtt": {
+              "broker_address": "mqtt-broker",
+              "broker_port": 1883
+            }
+          }
+        }
+      },
+      "panel": {
+        "publication_interval_day": 60,
+        "publication_interval_night": 60,
+        "database": {
+          "path": "/app/publisher/source/latlon_only_panel.csv",
+          "fields": {
+            "branch_num": "Branch",
+            "cluster_name": "Cluster_name",
+            "id": "Id",
+            "lat": "Latitude",
+            "lat_cell": "Lat_cell",
+            "lon": "Longitude",
+            "lon_cell": "Lon_cell",
+            "name": "Device_name",
+            "panel_id": "P_ID",
+            "panel_num": "Panel Number",
+            "rated_current": "Current",
+            "rated_power": "Rated Power",
+            "rated_power_factor": "Power Factor",
+            "rated_voltage": "Rated Voltage"
+          }
+        },
+        "failure_rate": {
+          "day_on": 0.000005,
+          "night_low_voltage": 0.0001,
+          "night_zero_voltage": 0.0001,
+          "transmission": 0.00001
+        },
+        "modes": {
+          "offline_simulation": {
+            "enable": false,
+            "save_data_path": "/app/results/Simulation"
+          },
+          "real_time_simulation": {
+            "enable": false,
+            "is_print_publish": false,
+            "topics": "panel/pub",
+            "mqtt": {
+              "broker_address": "mqtt-broker",
+              "broker_port": 1883
+            }
+          }
+        }
+      }
+    },
+    "generation": {
+      "consumption": {
+        "power_factor_variation": 0.01
+      },
+      "current": {
+        "c_lower_variation": 0.1,
+        "c_upper_variation": 0.02
+      },
+      "voltage": {
+        "v_lower_variation": 0.0155,
+        "v_upper_variation": 0.005
+      }
+    },
+    "persistence": {
+      "csv_lines_limit": 1048570,
+      "save_simulation_data": true
+    },
+    "window": {
+      "simulation_start_date": "09/23/2024",
+      "simulation_start_time": "00:00",
+      "simulation_stop_date": "09/24/2024",
+      "simulation_stop_time": "00:00",
+      "time_zone": "America/Sao_Paulo",
+      "use_current_time_and_date": false
+    }
+  }
+}

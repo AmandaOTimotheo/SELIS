@@ -1,0 +1,16 @@
+numpy
+paho-mqtt==1.6.1
+pytz
+flask
+waitress
+flask_socketio
+eventlet
+pandas
+folium
+debugpy==1.6.3
+openpyxl
+plotly 
+matplotlib
+scikit-learn
+cbor2
+pydantic

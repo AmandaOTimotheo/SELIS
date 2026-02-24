@@ -1,0 +1,18 @@
+target-version = "py312"
+line-length = 100
+
+exclude = [
+  ".venv",
+  ".vs",
+  ".vscode",
+  "__pycache__",
+  "financial",
+  "maps",
+  "reports",
+  "results",
+]
+
+[lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+ignore = ["E501"]
+
