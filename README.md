@@ -122,5 +122,5 @@ If you want a baseline, start from `default.json` and change only the toggles an
 
 ## License
 
-This project is distributed under the MIT License.  
+This project is distributed under the CC BY-NC-ND 4.0.  
 When reusing this code, keep the original copyright and attribution notice.
