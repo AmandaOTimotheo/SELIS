@@ -1,4 +1,4 @@
-﻿"""Web-based parameter editor and process runner for Generator_Math."""
+﻿"""Web-based parameter editor and process runner for SELIS."""
 
 import json
 import os
@@ -143,7 +143,7 @@ TEMPLATE = """
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Generator Math - Parameters Web UI</title>
+  <title>SELIS - Parameters Web UI</title>
   <style>
     :root {
       --bg: #f4f7fb;
@@ -377,7 +377,7 @@ TEMPLATE = """
 <body>
   <div class="wrap">
     <section class="card">
-      <h1 class="title">Generator Math - Parameters</h1>
+      <h1 class="title">SELIS - Parameters</h1>
       <div class="toolbar">
         <button id="btn-import">Import JSON</button>
         <input id="import-input" type="file" accept=".json,application/json" style="display:none" />

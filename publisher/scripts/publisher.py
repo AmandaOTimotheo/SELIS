@@ -1,4 +1,5 @@
-"""Main orchestration entrypoint for the Generator_Math publisher pipeline.
+
+"""Main orchestration entrypoint for the publisher pipeline.
 
 This module validates configuration, orchestrates data preparation, executes
 simulation workloads, and triggers optional analytics/reporting stages.
